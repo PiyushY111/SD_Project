@@ -1,0 +1,81 @@
+/* Hero Section Styles - Inspired by DCODE reference */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5rem 7%;
+  min-height: 80vh;
+  gap: 3rem;
+  background: var(--bg-dark);
+  position: relative;
+}
+
+.hero-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-left h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--text-white);
+  margin-bottom: 1.2rem;
+  line-height: 1.1;
+}
+
+.hero-left h1 .accent {
+  color: var(--lime);
+}
+
+.hero-left p {
+  font-size: 1.25rem;
+  color: var(--text-gray);
+  margin-bottom: 2.5rem;
+  max-width: 520px;
+  line-height: 1.6;
+}
+
+.hero-btn {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 1px solid var(--lime);
+  color: var(--lime);
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.hero-btn:hover, .hero-btn:focus {
+  background-color: var(--lime);
+  color: var(--bg-dark);
+}
+
+.hero-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-right img {
+  max-width: 95%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 8px 40px rgba(80, 184, 231, 0.08);
+  background: linear-gradient(120deg, rgba(199,244,100,0.08) 0%, rgba(80,184,231,0.04) 100%);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    padding: 3rem 5%;
+    gap: 2rem;
+    min-height: 60vh;
+  }
+  .hero-right img {
+    max-width: 100%;
+  }
+}
+  

@@ -1,0 +1,26 @@
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  padding: 2rem 0;
+}
+
+.expense-card.modern-card {
+  max-width: 600px;
+  min-width: 340px;
+  width: 100%;
+  padding: 2.5rem 2.5rem;
+  font-size: 1.13rem;
+}
+
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .expense-card.modern-card {
+    max-width: 98vw;
+    min-width: unset;
+    padding: 1.2rem 0.7rem;
+  }
+}
