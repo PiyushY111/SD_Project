@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-// Singleton Pattern: Only one connection is ever created
 let instance = null;
 
 const connectDB = async () => {

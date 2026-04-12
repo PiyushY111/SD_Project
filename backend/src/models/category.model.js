@@ -7,7 +7,6 @@ const categorySchema = new mongoose.Schema(
       required: [true, 'Category name is required'],
       trim: true,
     },
-    // null = predefined/global category; ObjectId = user-created category
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',

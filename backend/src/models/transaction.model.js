@@ -41,7 +41,6 @@ const transactionSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Indexes for filtering performance
 transactionSchema.index({ userId: 1 });
 transactionSchema.index({ date: 1 });
 transactionSchema.index({ categoryId: 1 });

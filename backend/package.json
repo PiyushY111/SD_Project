@@ -2,10 +2,10 @@
   "name": "expense-tracker-backend",
   "version": "1.0.0",
   "description": "Multi-User Expense Tracking System — MERN Backend",
-  "main": "app.js",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
     "seed": "node seed.js"
   },
   "dependencies": {
