@@ -3,6 +3,11 @@ const cookieParser = require('cookie-parser');
 const { sendError } = require('./utils/ApiResponse');
 const ApiError = require('./utils/ApiError');
 
+// Observer Pattern: register concrete observers on startup
+// SOLID: Open/Closed — add new observers here without touching controllers
+const TransactionLogger = require('./patterns/observers/TransactionLogger');
+new TransactionLogger(); // subscribes to transaction lifecycle events
+
 const authRoutes = require('./routes/auth.routes');
 const transactionRoutes = require('./routes/transaction.routes');
 const categoryRoutes = require('./routes/category.routes');
