@@ -3,6 +3,14 @@ const Category = require('../models/category.model');
 const { sendSuccess } = require('../utils/ApiResponse');
 const ApiError = require('../utils/ApiError');
 const asyncHandler = require('../utils/asyncHandler');
+const TransactionEventEmitter = require('../patterns/observers/TransactionEventEmitter');
+
+/**
+ * DESIGN PATTERN: Observer Pattern — emits lifecycle events after each mutation
+ * SOLID: Single Responsibility — controller only handles HTTP logic; observers handle side effects
+ * SOLID: Open/Closed — new side effects (email, analytics) added via new observers, not here
+ */
+const emitter = TransactionEventEmitter.getInstance();
 
 const TransactionController = {
   create: asyncHandler(async (req, res, next) => {
@@ -25,6 +33,9 @@ const TransactionController = {
       date: date || new Date(),
       description: description || '',
     });
+
+    // Observer Pattern: notify all subscribers
+    emitter.emitCreated(transaction);
 
     sendSuccess(res, 201, 'Transaction created successfully', transaction);
   }),
@@ -73,6 +84,10 @@ const TransactionController = {
     }
 
     const updated = await Transaction.findByIdAndUpdate(id, updateData, { new: true, runValidators: true });
+
+    // Observer Pattern: notify all subscribers
+    emitter.emitUpdated(updated);
+
     sendSuccess(res, 200, 'Transaction updated successfully', updated);
   }),
 
@@ -89,6 +104,10 @@ const TransactionController = {
     }
 
     await Transaction.findByIdAndDelete(id);
+
+    // Observer Pattern: notify all subscribers
+    emitter.emitDeleted(id);
+
     sendSuccess(res, 200, 'Transaction deleted successfully');
   }),
 };

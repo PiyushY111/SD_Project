@@ -8,7 +8,8 @@ const router = express.Router();
 
 router.use(protect);
 
-router.get('/monthly', monthlyReportValidator, validate, ReportController.monthly);
-router.get('/category', categoryReportValidator, validate, ReportController.category);
+// Strategy Pattern: default strategies injected here; swap them out for testing or new report types
+router.get('/monthly', monthlyReportValidator, validate, ReportController.monthly());
+router.get('/category', categoryReportValidator, validate, ReportController.category());
 
 module.exports = router;
